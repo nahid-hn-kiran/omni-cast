@@ -44,4 +44,5 @@ p {
   color: var(--omni-white);
   padding: 8px 20px;
   border-radius: 20px;
+  display: inline-block;
 }
