@@ -7,7 +7,8 @@ export default {
       "omni-pink": "#FF2D64",
       "omni-gray": "#2B0051",
       "omni-dark": "#13ce66",
-      "gray-dark": "#18002D",
+      "omni-gray-dark": "#18002D",
+      "omni-white": "#FFFFFF",
     },
     extend: {
       backgroundImage: {
