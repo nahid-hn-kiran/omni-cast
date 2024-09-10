@@ -1,0 +1,31 @@
+.episode-card {
+  background-color: var(--omni-white);
+  box-shadow: 0px 25px 40px 0px #ff5e751a;
+}
+
+.episode-title {
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 700;
+  color: var(--omni-dark);
+}
+
+.episode-description {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 300;
+  color: var(--omni-dark);
+}
+
+.episode-play svg {
+  color: var(--omni-pink);
+  height: 24px;
+  width: 24px;
+}
+
+.episode-footer-text {
+  font-size: 15px;
+  line-height: 18.75px;
+  font-weight: 400;
+  color: var(--omni-dark);
+}
