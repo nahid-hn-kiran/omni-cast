@@ -1,0 +1,113 @@
+.audio-player {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.play-pause svg {
+  height: 38px;
+  width: 38px;
+  color: white;
+}
+
+input[type="range"] {
+  width: 100px;
+}
+
+.audio-duration {
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 32px;
+  color: var(--omni-white);
+}
+
+/* General Range Input Styles */
+/* General Range Input Styles */
+input.range-bar.audio-range {
+  width: 100%;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Hide the thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0;
+  height: 0;
+  background: transparent;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 0;
+  height: 0;
+  background: transparent;
+}
+
+input[type="range"]::-ms-thumb {
+  width: 0;
+  height: 0;
+  background: transparent;
+}
+
+/* Track Styling */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 5px;
+}
+
+input[type="range"]::-moz-range-track {
+  height: 6px;
+  border-radius: 5px;
+}
+
+input[type="range"]::-ms-track {
+  height: 6px;
+  border-radius: 5px;
+  border: none;
+  color: transparent;
+}
+
+/* Progress Styling */
+input[type="range"]::-webkit-slider-runnable-track::after {
+  content: "";
+  position: absolute;
+  height: 6px;
+  background: red;
+  border-radius: 5px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none; /* Allows interaction with the underlying slider */
+}
+
+input[type="range"]::-moz-range-track::after {
+  content: "";
+  position: absolute;
+  height: 6px;
+  background: red;
+  border-radius: 5px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none; /* Allows interaction with the underlying slider */
+}
+
+input[type="range"]::-ms-track::after {
+  content: "";
+  position: absolute;
+  height: 6px;
+  background: red;
+  border-radius: 5px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none; /* Allows interaction with the underlying slider */
+}

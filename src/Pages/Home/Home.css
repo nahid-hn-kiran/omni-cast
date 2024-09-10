@@ -46,3 +46,37 @@
   font-weight: 300;
   color: var(--omni-white);
 }
+
+.hero-audio-container {
+  padding: 45px;
+  background-color: var(--omni-white);
+  box-shadow: 0px 20px 60px 0px #ffb8ca57;
+  position: relative;
+  top: -116px;
+}
+
+.hero-audio {
+  background-color: var(--omni-pink);
+  border-radius: 6px;
+}
+
+.player-buttons {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  color: var(--omni-white);
+}
+
+.plaer-title {
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 700;
+  color: var(--omni-white);
+}
+
+.player-description {
+  font-size: 18px;
+  line-height: 32px;
+  font-weight: 300;
+  color: var(--omni-white);
+}
