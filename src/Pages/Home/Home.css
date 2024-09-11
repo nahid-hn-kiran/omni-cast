@@ -80,3 +80,14 @@
   font-weight: 300;
   color: var(--omni-white);
 }
+
+.meet-host {
+  background-color: var(--omni-pink-gray);
+  padding: 50px 0;
+}
+
+.slider-arrows svg {
+  height: 35px;
+  width: 35px;
+  color: #00000066;
+}

@@ -1,0 +1,33 @@
+.host-card-thumbnail img {
+  background-color: var(--omni-white);
+  border: 1px solid var(--omni-pink);
+  padding: 29px 21px;
+  border-radius: 150px;
+}
+
+.card-small-text {
+  font-size: 16px;
+  line-height: 32px;
+  font-weight: 250;
+  color: var(--omni-dark);
+}
+
+.card-social-media a {
+  height: 25px;
+  width: 25px;
+  position: relative;
+  border-radius: 50%;
+  background-color: var(--omni-dark);
+  color: var(--omni-white);
+}
+
+.card-social-media a:hover {
+  background: linear-gradient(180deg, #fe8a60 0%, #ff2d64 100%);
+}
+
+.card-social-media svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
