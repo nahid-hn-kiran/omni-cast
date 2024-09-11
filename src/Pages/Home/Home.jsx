@@ -5,6 +5,7 @@ import MeetTheHost from "./MeetTheHost";
 import OurSponsors from "./OurSponsors";
 import SubscribeFollow from "./SubscribeFollow";
 import Testimonial from "./Testimonial";
+import WhyUs from "./WhyUs";
 
 const Home = () => {
   return (
@@ -21,6 +22,8 @@ const Home = () => {
       <Testimonial />
       {/* Our Sponsors */}
       <OurSponsors />
+      {/* Why Us */}
+      <WhyUs />
     </>
   );
 };

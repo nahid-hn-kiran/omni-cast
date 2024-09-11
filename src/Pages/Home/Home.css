@@ -173,3 +173,19 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
   position: relative;
   top: -67px;
 }
+
+.about-us {
+  padding: 50px 0;
+}
+
+.counter-title {
+  font-size: 32px;
+  line-height: 52px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.counter-box {
+  border-bottom: 1px solid var(--omni-pink);
+  padding-bottom: 14px;
+}
