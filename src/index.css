@@ -88,3 +88,8 @@ p {
     gap: 30px;
   }
 }
+
+.swiper-pagination,
+.swiper {
+  position: static !important;
+}

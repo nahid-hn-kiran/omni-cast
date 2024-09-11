@@ -91,3 +91,39 @@
   width: 35px;
   color: #00000066;
 }
+
+.subscribe-follow {
+  background-color: var(--omni-pink);
+  padding: 50px 0;
+}
+
+.follow-card {
+  background-color: var(--omni-white);
+  padding: 60px 55px;
+  border-radius: 20px;
+}
+
+.follow-card img {
+  margin: 0 auto;
+}
+
+.subscribe-follow .section-top,
+.subscribe-follow .section-title {
+  color: var(--omni-white);
+}
+
+.testimonial {
+  padding: 100px 0;
+}
+
+.testimonials {
+  position: relative;
+}
+
+.testimonials .swiper-pagination {
+  margin-top: 25px !important;
+}
+
+span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: var(--omni-pink);
+}
