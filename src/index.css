@@ -59,3 +59,8 @@ p {
 .swiper {
   position: static !important;
 }
+
+.home-newsletter {
+  position: relative;
+  top: 110px;
+}

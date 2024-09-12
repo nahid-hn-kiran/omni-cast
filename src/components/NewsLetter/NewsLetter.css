@@ -1,0 +1,48 @@
+.newsletter {
+  background-color: var(--omni-pink);
+  padding: 45px 70px;
+  border-radius: 15px;
+}
+
+.newsletter-title {
+  font-size: 38px;
+  line-height: 47.5px;
+  font-weight: 700;
+  color: var(--omni-white);
+}
+
+.newsletter-texts p {
+  color: var(--omni-white);
+}
+
+.email-container {
+  position: relative;
+}
+
+.email-input {
+  width: 100%;
+  padding: 20px 0 20px 40px;
+  font-size: 18px;
+  line-height: 32px;
+  font-weight: 300;
+  border: 1px solid var(--omni-pink);
+  border-radius: 35.5px;
+  box-sizing: border-box;
+}
+
+.email-input::placeholder {
+  text-transform: uppercase;
+}
+
+.subscribe-btn {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  padding: 18px 38px;
+  background-color: var(--omni-pink);
+  color: white;
+  border: none;
+  border-radius: 35.5px;
+  cursor: pointer;
+}
