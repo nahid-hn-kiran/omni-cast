@@ -3,6 +3,10 @@
   box-shadow: 0px 25px 40px 0px #ff5e751a;
 }
 
+.episode-thumbnail img {
+  width: 100%;
+}
+
 .episode-title {
   font-size: 20px;
   line-height: 32px;

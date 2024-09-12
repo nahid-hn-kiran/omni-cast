@@ -17,7 +17,7 @@ const SubscribeFollow = () => {
             </p>
           </div>
         </div>
-        <div className="follow-us grid grid-cols-4 mt-7 gap-x-8">
+        <div className="follow-us grid grid-cols-1 gap-y-4 sm:grid-cols-2 lg:grid-cols-4 mt-7 gap-x-8">
           <Link to="/" className="follow-card">
             <img src={SoundCloud} alt="Sound Cloud" />
           </Link>

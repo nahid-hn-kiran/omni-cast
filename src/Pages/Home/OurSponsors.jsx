@@ -21,12 +21,12 @@ const OurSponsors = () => {
         </div>
         <div className="sponsors pb-5 mt-10">
           <Swiper
-            slidesPerView={1}
+            slidesPerView={2}
             spaceBetween={10}
             loop={true}
             breakpoints={{
               640: {
-                slidesPerView: 2,
+                slidesPerView: 3,
                 spaceBetween: 20,
               },
               768: {

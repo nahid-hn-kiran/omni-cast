@@ -16,7 +16,7 @@ const OmniBlogs = () => {
         </div>
         {/* Blogs  */}
         <div className="home-blogs">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-4 mt-10 mb-14">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-y-4 gap-x-4 mt-10 mb-14">
             <BlogCard />
             <BlogCard />
             <BlogCard />

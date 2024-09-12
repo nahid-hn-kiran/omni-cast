@@ -6,7 +6,7 @@ const Hero = () => {
     <section id="hero-section">
       <div className="bg-overlay"></div>
       <div className="container">
-        <div className="w-5/12 hero-content">
+        <div className="md:w-5/12 hero-content">
           <h1 className="hero-title">Connect to Your Audience</h1>
           <p className="hero-text mt-4">
             Interacting with your audience creating new relationships, nurturing

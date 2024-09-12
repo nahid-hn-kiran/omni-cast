@@ -5,13 +5,9 @@
 }
 
 .play-pause svg {
-  height: 38px;
-  width: 38px;
+  height: 34px;
+  width: 34px;
   color: white;
-}
-
-input[type="range"] {
-  width: 100px;
 }
 
 .audio-duration {
@@ -21,8 +17,6 @@ input[type="range"] {
   color: var(--omni-white);
 }
 
-/* General Range Input Styles */
-/* General Range Input Styles */
 input.range-bar.audio-range {
   width: 100%;
 }
@@ -36,7 +30,6 @@ input[type="range"] {
   position: relative;
 }
 
-/* Hide the thumb */
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -57,7 +50,6 @@ input[type="range"]::-ms-thumb {
   background: transparent;
 }
 
-/* Track Styling */
 input[type="range"]::-webkit-slider-runnable-track {
   height: 6px;
   border-radius: 5px;

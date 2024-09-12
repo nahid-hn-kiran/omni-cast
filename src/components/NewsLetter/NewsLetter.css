@@ -1,6 +1,5 @@
 .newsletter {
   background-color: var(--omni-pink);
-  padding: 45px 70px;
   border-radius: 15px;
 }
 
@@ -37,9 +36,8 @@
 .subscribe-btn {
   position: absolute;
   top: 50%;
-  right: 20px;
+  right: 10px;
   transform: translateY(-50%);
-  padding: 18px 38px;
   background-color: var(--omni-pink);
   color: white;
   border: none;

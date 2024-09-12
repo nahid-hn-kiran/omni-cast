@@ -77,7 +77,7 @@ const AudioPlayer = ({ src }) => {
         value={volume * 100}
         onChange={handleVolumeChange}
         max="100"
-        className="range-bar volume-bar"
+        className="range-bar volume-bar w-9 sm:w-14"
         title={`Volume: ${Math.round(volume * 100)}`}
         style={{
           background: `linear-gradient(to right, #000000 ${

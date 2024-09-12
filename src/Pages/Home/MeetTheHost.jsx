@@ -15,18 +15,17 @@ const MeetTheHost = () => {
   return (
     <div className="meet-host">
       <div className="container">
-        <div className="grid grid-cols-3">
-          <div></div>
+        <div className="host-top relative">
           <div>
             <h2 className="section-title text-center">Meet the Host</h2>
             <div className="">
-              <p className="mt-2">
+              <p className="mt- w-9/12 md:w-4/12 mx-auto">
                 Sed laoreet diam sagittis tempus convallis. Interdum et
                 malesuada fames ac ante ipsum primis in faucibus.
               </p>
             </div>
           </div>
-          <div className="flex flex-col items-end justify-end gap-y-6 slider-arrows">
+          <div className="flex flex-col items-end justify-end gap-y-3 slider-arrows absolute bottom-0 right-0">
             <button className="custom-prev">
               <FaArrowLeft />
             </button>
