@@ -2,6 +2,7 @@ import EpisodesHome from "./EpisodesHome";
 import Hero from "./Hero";
 import HeroAudio from "./HeroAudio";
 import MeetTheHost from "./MeetTheHost";
+import OmniBlogs from "./OmniBlogs";
 import OurSponsors from "./OurSponsors";
 import SubscribeFollow from "./SubscribeFollow";
 import Testimonial from "./Testimonial";
@@ -24,6 +25,8 @@ const Home = () => {
       <OurSponsors />
       {/* Why Us */}
       <WhyUs />
+      {/* Omni Blogs */}
+      <OmniBlogs />
     </>
   );
 };

@@ -189,3 +189,7 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
   border-bottom: 1px solid var(--omni-pink);
   padding-bottom: 14px;
 }
+
+.omni-blogs {
+  padding: 50px 0;
+}

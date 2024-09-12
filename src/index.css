@@ -55,40 +55,6 @@ p {
   display: inline-block;
 }
 
-.omni-row-cols-1 {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 30px;
-}
-
-.omni-row-cols-2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-}
-
-.omni-row-cols-3 {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 30px;
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .omni-row-cols-md-2 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-  }
-}
-
-@media only screen and (min-width: 992px) {
-  .omni-row-cols-lg-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-  }
-}
-
 .swiper-pagination,
 .swiper {
   position: static !important;

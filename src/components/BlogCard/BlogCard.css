@@ -1,0 +1,21 @@
+.blog-card .blog-content {
+  border: 1px solid #e0e0e0;
+}
+
+.blog-card img {
+  width: 100%;
+}
+
+.blog-meta p {
+  font-size: 14px;
+  line-height: 28px;
+  font-weight: 300;
+  color: var(--omni-dark);
+}
+
+.blog-title {
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 700;
+  color: #232635;
+}
