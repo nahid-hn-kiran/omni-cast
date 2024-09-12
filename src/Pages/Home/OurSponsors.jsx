@@ -87,10 +87,10 @@ const OurSponsors = () => {
             </SwiperSlide>
           </Swiper>
         </div>
-        <div className="become-sponsor">
-          <div className="sm:w-6/12 mx-auto">
+        <div className="become-sponsor px-4">
+          <div className="md:w-6/12 mx-auto">
             <div className="sponsor-bg-overlay"></div>
-            <div className="sponsor-card flex flex-col items-center text-center">
+            <div className="sponsor-card p-4 md:p-16 flex flex-col items-center text-center">
               <h2 className="section-title">Become a sponsor!</h2>
               <p className="mt-3">
                 Sed laoreet diam sagittis tempus convallis. Interdum et

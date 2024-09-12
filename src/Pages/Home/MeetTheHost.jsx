@@ -13,7 +13,7 @@ import { Navigation } from "swiper/modules";
 
 const MeetTheHost = () => {
   return (
-    <div className="meet-host">
+    <div className="meet-host py-12">
       <div className="container">
         <div className="host-top relative">
           <div>

@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="container">
-        <div className="grid grid-cols-5 gap-x-16 footer-top">
+        <div className="lg:grid lg:grid-cols-5 gap-x-16 footer-top">
           <div className="footer-logo-area">
             <Link to="/">
               <img src={Logo} alt="Footer Logo" />
@@ -20,7 +20,7 @@ const Footer = () => {
               industry. Lorem Ipsum has been
             </p>
           </div>
-          <div className="footer-menu-area col-span-4 grid grid-cols-4">
+          <div className="footer-menu-area col-span-4 grid sm:grid-cols-3 md:grid-cols-4 mt-4 lg:mt-0">
             <div className="footer-menu">
               <h3 className="footer-menu-title">Support Us</h3>
               <ul className="mt-6">

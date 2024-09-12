@@ -8,7 +8,7 @@ const HeroAudio = () => {
   return (
     <div className="container">
       <div className="hero-audio-container md:p-11">
-        <div className="hero-audio flex flex-col lg:flex-row items-center justify-between py-10 lg:py-0 lg:pr-16">
+        <div className="hero-audio flex flex-col lg:flex-row items-center justify-between py-10 lg:py-0 lg:pr-16 gap-y-3">
           <div className="flex flex-col gap-y-3 sm:flex-row items-center gap-x-4">
             <div className="player-thumbnail">
               <img src={HeroAudioThumbnail} alt="Hero Audio" />
