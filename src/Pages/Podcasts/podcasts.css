@@ -13,3 +13,8 @@
   border: 1px solid var(--omni-pink);
   border-radius: 16.5px;
 }
+
+.podcast-filter-btns button:hover {
+  background: linear-gradient(90deg, #ff0026 1.56%, #fc8496 100%);
+  color: var(--omni-white);
+}
