@@ -15,7 +15,7 @@ const EpisodeCard = () => {
         <Link to="/" className="episode-title">
           Human Research anatomy with mr. Tom
         </Link>
-        <p className="episode description mt-2">
+        <p className="episode-description mt-2">
           Sed laoreet diam sagittis tempus convallis. Interdum et malesuada
         </p>
         <div className="episode-footer flex items-end justify-between gap-x-3 mt-2">

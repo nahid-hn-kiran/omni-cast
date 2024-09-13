@@ -1,0 +1,10 @@
+.review {
+  background-color: #ffb8ca1a;
+  border-radius: 6px;
+}
+
+.review-form input,
+.review-form textarea {
+  border-radius: 6px;
+  padding: 10px;
+}

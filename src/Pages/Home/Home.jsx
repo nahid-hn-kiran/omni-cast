@@ -1,4 +1,3 @@
-import NewsLetter from "../../components/NewsLetter/NewsLetter";
 import EpisodesHome from "./EpisodesHome";
 import Hero from "./Hero";
 import HeroAudio from "./HeroAudio";
@@ -28,12 +27,6 @@ const Home = () => {
       <WhyUs />
       {/* Omni Blogs */}
       <OmniBlogs />
-      {/* Newsletter  */}
-      <div className="home-newsletter">
-        <div className="container">
-          <NewsLetter />
-        </div>
-      </div>
     </>
   );
 };
