@@ -1,0 +1,15 @@
+.podcast-section-title {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 700;
+  color: var(--omni-dark);
+}
+
+.podcast-filter-btns button {
+  font-size: 18px;
+  line-height: 22.5px;
+  font-weight: 300;
+  padding: 5px 13px;
+  border: 1px solid var(--omni-pink);
+  border-radius: 16.5px;
+}

@@ -11,7 +11,7 @@ const EpisodeCard = () => {
       <div className="episode-thumbnail">
         <img src={Episode1} alt="Episode 1" />
       </div>
-      <div className="episode-content p-5">
+      <div className="episode-content p-7">
         <Link to="/" className="episode-title">
           Human Research anatomy with mr. Tom
         </Link>

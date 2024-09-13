@@ -1,0 +1,19 @@
+.pagination-item {
+  border: 1px solid #bdbdbd;
+  font-size: 26px;
+  line-height: 32.5px;
+  font-weight: 500;
+  color: var(--omni-dark);
+  height: 63px;
+  width: 63px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  border-radius: 50%;
+}
+
+.pagination-item:hover {
+  background: linear-gradient(90deg, #ff0026 1.56%, #fc8496 100%);
+  color: var(--omni-white);
+}
