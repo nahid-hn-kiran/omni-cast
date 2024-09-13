@@ -184,3 +184,13 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
 .omni-blogs {
   padding-top: 50px;
 }
+
+@media only screen and (max-width: 767px) {
+}
+
+@media only screen and (max-width: 767px) {
+  .hero-title {
+    font-size: 42px;
+    line-height: 52px;
+  }
+}
