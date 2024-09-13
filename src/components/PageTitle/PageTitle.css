@@ -1,0 +1,8 @@
+.page-title .section-bg {
+  background-image: url(../../assets//images/episodes-title.png);
+}
+
+.page-title p,
+.page-title .section-title {
+  color: var(--omni-white);
+}

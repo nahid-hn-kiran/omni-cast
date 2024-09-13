@@ -89,7 +89,7 @@ const OurSponsors = () => {
         </div>
         <div className="become-sponsor px-4">
           <div className="md:w-6/12 mx-auto">
-            <div className="sponsor-bg-overlay"></div>
+            <div className="section-bg"></div>
             <div className="sponsor-card p-4 md:p-16 flex flex-col items-center text-center">
               <h2 className="section-title">Become a sponsor!</h2>
               <p className="mt-3">

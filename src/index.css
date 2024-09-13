@@ -66,6 +66,29 @@ p {
   top: 110px;
 }
 
+.section-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  height: 100%;
+  width: 100%;
+  z-index: -5;
+}
+
+.section-bg::after {
+  background: linear-gradient(to right, #b70030cc, #ff5e8800);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  opacity: 0.7;
+}
+
 @media only screen and (max-width: 767px) {
   .container {
     padding: 0 10px;

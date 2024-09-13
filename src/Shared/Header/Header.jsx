@@ -28,8 +28,8 @@ const Header = () => {
                 <ul className="flex gap-x-5 items-center">
                   {navMenu.map((menu, i) => (
                     <li key={i}>
-                      <Link to="/" className="uppercase">
-                        {menu}
+                      <Link to={menu.url} className="uppercase">
+                        {menu.name}
                       </Link>
                     </li>
                   ))}
@@ -63,8 +63,11 @@ const Header = () => {
                   <ul className="flex flex-col gap-y-3 items-center">
                     {navMenu.map((menu, i) => (
                       <li key={i}>
-                        <Link to="/" className="uppercase text-omni-gray">
-                          {menu}
+                        <Link
+                          to={menu.url}
+                          className="uppercase text-omni-gray"
+                        >
+                          {menu.name}
                         </Link>
                       </li>
                     ))}

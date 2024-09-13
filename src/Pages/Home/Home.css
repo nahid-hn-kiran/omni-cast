@@ -3,28 +3,8 @@
   border-radius: 30px;
 }
 
-.bg-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-image: url(../../assets/images/hero-bg.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  height: 100%;
-  width: 100%;
-  z-index: -5;
-}
-
-.bg-overlay::after {
-  background: linear-gradient(to right, #b70030cc, #ff5e8800);
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  content: "";
-  opacity: 0.7;
+#hero-section .section-bg {
+  background-image: url(../../assets/images/sponsor-bg.png);
 }
 
 .hero-title {
@@ -133,28 +113,8 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
   margin-top: 200px;
 }
 
-.sponsor-bg-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
+.become-sponsor .section-bg {
   background-image: url(../../assets/images/sponsor-bg.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top center;
-  height: 100%;
-  width: 100%;
-  z-index: -5;
-}
-
-.sponsor-bg-overlay::after {
-  background: linear-gradient(to right, #b70030cc, #ff5e8800);
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  content: "";
-  opacity: 0.7;
 }
 
 .sponsor-card {
@@ -192,5 +152,8 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
   .hero-title {
     font-size: 42px;
     line-height: 52px;
+  }
+  p {
+    font-size: 16px;
   }
 }
