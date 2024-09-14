@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home";
 import Podcasts from "../Pages/Podcasts/Podcasts";
 import SingleEpisode from "../components/SingleEpisode/SingleEpisode";
 import SingleBlogPage from "../components/BlogCard/SingleBlogPage";
+import Blog from "../Pages/Blog/Blog";
 
 const Router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const Router = createBrowserRouter([
       {
         path: "/single",
         element: <SingleBlogPage />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
       },
     ],
   },
