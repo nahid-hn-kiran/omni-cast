@@ -5,6 +5,10 @@ import Podcasts from "../Pages/Podcasts/Podcasts";
 import SingleEpisode from "../components/SingleEpisode/SingleEpisode";
 import SingleBlogPage from "../components/BlogCard/SingleBlogPage";
 import Blog from "../Pages/Blog/Blog";
+import NotFound from "../Pages/NotFound/NotFound";
+import AboutUs from "../Pages/AboutUs/AboutUs";
+import Login from "../Shared/Login/Login";
+import Register from "../Shared/Register/Register";
 
 const Router = createBrowserRouter([
   {
@@ -30,6 +34,22 @@ const Router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog />,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "register",
+        element: <Register />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },

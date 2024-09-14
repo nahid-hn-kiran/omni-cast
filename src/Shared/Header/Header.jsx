@@ -33,8 +33,8 @@ const Header = () => {
                       </Link>
                     </li>
                   ))}
-                  <Link to="/" className="primary-btn">
-                    Donate
+                  <Link to="/login" className="primary-btn">
+                    Login
                   </Link>
                 </ul>
               </nav>
@@ -45,7 +45,7 @@ const Header = () => {
               </div>
             </div>
             {/* Mobile Menu  */}
-            <div className="mobile-menu relative">
+            <div className="mobile-menu md:hidden relative">
               <div className="show-menu text-end">
                 <button
                   onClick={showMenuHandler}
@@ -71,8 +71,8 @@ const Header = () => {
                         </Link>
                       </li>
                     ))}
-                    <Link to="/" className="primary-btn">
-                      Donate
+                    <Link to="/login" className="primary-btn">
+                      Login
                     </Link>
                   </ul>
                 </nav>
