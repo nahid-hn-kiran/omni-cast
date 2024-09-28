@@ -5,11 +5,15 @@ import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import Router from "./Routes/Router.jsx";
 import "react-datepicker/dist/react-datepicker.css";
+import { Provider } from "react-redux";
+import { store } from "./redux/store.js";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={Router}>
-      <App />
-    </RouterProvider>
+    <Provider store={store}>
+      <RouterProvider router={Router}>
+        <App />
+      </RouterProvider>
+    </Provider>
   </StrictMode>
 );

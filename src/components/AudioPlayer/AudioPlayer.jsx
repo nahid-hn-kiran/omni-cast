@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import "./AudioPlayer.css"; // Add styles as needed
+import "./AudioPlayer.css";
 import { FaPauseCircle, FaPlayCircle } from "react-icons/fa";
+import PropTypes from "prop-types";
 
-const AudioPlayer = ({ src }) => {
+const AudioPlayer = ({ audio }) => {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -54,7 +55,7 @@ const AudioPlayer = ({ src }) => {
 
   return (
     <div className="audio-player">
-      <audio ref={audioRef} src={src} />
+      <audio ref={audioRef} src={audio} />
       <button className="play-pause" onClick={togglePlayPause}>
         {isPlaying ? <FaPauseCircle /> : <FaPlayCircle />}
       </button>
@@ -88,6 +89,10 @@ const AudioPlayer = ({ src }) => {
       />
     </div>
   );
+};
+
+AudioPlayer.propTypes = {
+  audio: PropTypes.string,
 };
 
 export default AudioPlayer;

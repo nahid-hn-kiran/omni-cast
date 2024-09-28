@@ -1,7 +1,17 @@
 import { Link } from "react-router-dom";
 import EpisodeCard from "../../components/EpisodeCard/EpisodeCard";
+import { useGetAllPodcastQuery } from "../../redux/features/podcast/podcastSlice";
+import Loading from "../../Shared/Loading/Loading";
+import Error from "../../Shared/Error/Error";
 
 const EpisodesHome = () => {
+  const { data: podcasts, isLoading, error } = useGetAllPodcastQuery();
+  if (isLoading) {
+    return <Loading />;
+  }
+  if (error) {
+    return <Error />;
+  }
   return (
     <div className="home-episodes pb-24">
       <div className="container">
@@ -12,18 +22,15 @@ const EpisodesHome = () => {
             fames ac ante ipsum primis in faucibus.
           </p>
           <div className="flex justify-end">
-            <Link to="/" className="primary-btn">
+            <Link to="/podcasts" className="primary-btn">
               View All
             </Link>
           </div>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 mt-6 gap-7">
-          <EpisodeCard />
-          <EpisodeCard />
-          <EpisodeCard />
-          <EpisodeCard />
-          <EpisodeCard />
-          <EpisodeCard />
+          {podcasts?.data?.slice(0, 4).map((podcast) => (
+            <EpisodeCard key={podcast._id} podcast={podcast} />
+          ))}
         </div>
       </div>
     </div>

@@ -2,8 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 const NotFound = () => {
   const navigate = useNavigate();
-  const goBack = (e) => {
-    e.pteventDefault();
+  const goBack = () => {
     navigate(-1);
   };
   return (

@@ -9,6 +9,7 @@ import NotFound from "../Pages/NotFound/NotFound";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import Login from "../Shared/Login/Login";
 import Register from "../Shared/Register/Register";
+import Dashboard from "../Pages/Dashboard/Dashboard";
 
 const Router = createBrowserRouter([
   {
@@ -24,16 +25,16 @@ const Router = createBrowserRouter([
         element: <Podcasts />,
       },
       {
-        path: "/page",
+        path: "/podcasts/:id",
         element: <SingleEpisode />,
-      },
-      {
-        path: "/single",
-        element: <SingleBlogPage />,
       },
       {
         path: "/blog",
         element: <Blog />,
+      },
+      {
+        path: "/blog/:id",
+        element: <SingleBlogPage />,
       },
       {
         path: "/about-us",
@@ -44,8 +45,12 @@ const Router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "register",
+        path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/admin/dashboard",
+        element: <Dashboard />,
       },
       {
         path: "*",

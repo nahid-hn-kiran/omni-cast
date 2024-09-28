@@ -6,7 +6,7 @@ export default {
       "omni-yellow": "#FE8A60",
       "omni-pink": "#FF2D64",
       "omni-gray": "#2B0051",
-      "omni-dark": "#13ce66",
+      "omni-dark": "#000000",
       "omni-gray-dark": "#18002D",
       "omni-white": "#FFFFFF",
     },

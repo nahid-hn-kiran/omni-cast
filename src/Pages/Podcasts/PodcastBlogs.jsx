@@ -17,9 +17,9 @@ const PodcastBlogs = () => {
         {/* Blogs  */}
         <div className="podcast-blogs">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-y-4 gap-x-7 mt-10 mb-14">
+            {/* <BlogCard />
             <BlogCard />
-            <BlogCard />
-            <BlogCard />
+            <BlogCard /> */}
           </div>
           <div className="see-more text-center">
             <Link to="/" className="primary-btn">

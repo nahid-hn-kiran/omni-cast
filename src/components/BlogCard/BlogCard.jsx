@@ -1,28 +1,41 @@
 import "./BlogCard.css";
-import Blog1 from "../../assets/images/blog-1.png";
 import { Link } from "react-router-dom";
+import PropTypes, { string } from "prop-types";
+import FormatDate from "../FormatDate/FormatDate";
 
-const BlogCard = () => {
+const BlogCard = ({ blog }) => {
+  const { _id, createdAt, title, description, thumbnail } = blog;
   return (
     <div className="blog-card">
-      <div className="blog-thumbnail">
-        <img src={Blog1} alt="Blog 1" />
-      </div>
+      <Link to={`/blog/${_id}`} className="blog-thumbnail">
+        <img src={thumbnail} alt={title} />
+      </Link>
       <div className="blog-content p-5">
-        <Link to="/" className="blog-title">
-          OmniCast is the great platform of PODCAST world!
+        <Link to={`/blog/${_id}`} className="blog-title">
+          {title}
         </Link>
         <p className="common-text mt-2">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been
+          {description.length > 100
+            ? description.substring(0, 100) + "..."
+            : description}
         </p>
         <div className="flex justify-between blog-meta mt-5">
-          <p>Date : 12 March 2023</p>
+          <p>Date : {FormatDate(createdAt)}</p>
           <p>3 min read</p>
         </div>
       </div>
     </div>
   );
+};
+
+BlogCard.propTypes = {
+  blog: PropTypes.shape({
+    _id: string,
+    title: string,
+    description: string,
+    thumbnail: string,
+    createdAt: string,
+  }),
 };
 
 export default BlogCard;
