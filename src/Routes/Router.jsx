@@ -10,6 +10,12 @@ import AboutUs from "../Pages/AboutUs/AboutUs";
 import Login from "../Shared/Login/Login";
 import Register from "../Shared/Register/Register";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import ManagePodcast from "../Pages/Dashboard/ManagePodcast/ManagePodcast";
+import AddPodcast from "../Pages/Dashboard/ManagePodcast/AddPodcast";
+import ManageUser from "../Pages/Dashboard/ManageUser/ManageUser";
+import ManageBlog from "../Pages/Dashboard/ManageBlog/ManageBlog";
+import AddBlog from "../Pages/Dashboard/ManageBlog/AddBlog";
+import UpdateUser from "../Pages/Dashboard/ManageUser/UpdateUser";
 
 const Router = createBrowserRouter([
   {
@@ -51,6 +57,32 @@ const Router = createBrowserRouter([
       {
         path: "/admin/dashboard",
         element: <Dashboard />,
+        children: [
+          {
+            path: "manage-podcasts",
+            element: <ManagePodcast />,
+          },
+          {
+            path: "add-podcast",
+            element: <AddPodcast />,
+          },
+          {
+            path: "manage-users",
+            element: <ManageUser />,
+          },
+          {
+            path: "manage-users/:id",
+            element: <UpdateUser />,
+          },
+          {
+            path: "manage-blogs",
+            element: <ManageBlog />,
+          },
+          {
+            path: "add-blog",
+            element: <AddBlog />,
+          },
+        ],
       },
       {
         path: "*",

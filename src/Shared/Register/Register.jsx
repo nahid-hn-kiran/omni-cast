@@ -1,17 +1,22 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useRegisterUserMutation } from "../../redux/features/auth/authSlice";
+import Loading from "../Loading/Loading";
 
 const Register = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
-  const handleSubmit = (e) => {
+  const [registerUser, { isLoading, error, isSuccess }] =
+    useRegisterUserMutation();
+  if (isLoading) {
+    return <Loading />;
+  }
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
-      return;
-    }
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const confirmPassword = e.target.confirmPassword.value;
+    const user = { name, email, password, confirmPassword };
+    const result = await registerUser(user).unwrap();
+    console.log(isSuccess, result);
   };
 
   return (
@@ -20,11 +25,19 @@ const Register = () => {
         <h2 className="text-2xl font-bold text-center mb-6">Register</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
+            <label className="block text-gray-700">Name</label>
+            <input
+              type="name"
+              name="name"
+              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+              required
+            />
+          </div>
+          <div className="mb-4">
             <label className="block text-gray-700">Email</label>
             <input
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name="email"
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
               required
             />
@@ -32,9 +45,8 @@ const Register = () => {
           <div className="mb-4">
             <label className="block text-gray-700">Password</label>
             <input
+              name="password"
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
               required
             />
@@ -43,15 +55,15 @@ const Register = () => {
             <label className="block text-gray-700">Confirm Password</label>
             <input
               type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              name="confirmPassword"
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
               required
             />
           </div>
+          <p>{error && error?.data?.error}</p>
           <button
             type="submit"
-            className="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition-colors"
+            className="w-full bg-omni-yellow text-white py-2 rounded-md hover:bg-omni-pink transition-colors"
           >
             Register
           </button>

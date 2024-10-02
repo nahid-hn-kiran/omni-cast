@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import Sidebar from "./sidebar";
 
 const Dashboard = () => {
@@ -7,12 +8,8 @@ const Dashboard = () => {
         <>
           <Sidebar />
         </>
-        <div className="p-6">
-          <h1 className="text-3xl font-bold">Admin Dashboard</h1>
-          <p>
-            Welcome to the admin panel. From here, you can manage podcasts,
-            blogs, and more!
-          </p>
+        <div className="p-6 flex-1">
+          <Outlet />
         </div>
       </div>
     </div>
