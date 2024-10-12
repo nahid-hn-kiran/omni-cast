@@ -46,7 +46,9 @@ p {
   color: var(--omni-dark);
 }
 
-.primary-btn {
+.primary-btn,
+.secondary-btn,
+.info-btn {
   background-color: var(--omni-pink);
   font-size: 18px;
   font-weight: 700;
@@ -55,6 +57,15 @@ p {
   padding: 8px 20px;
   border-radius: 20px;
   display: inline-block;
+}
+
+.secondary-btn {
+  background-color: var(--omni-gray-light);
+  color: var(--omni-dark);
+}
+
+.info-btn {
+  background-color: var(--omni-gray);
 }
 
 .swiper-pagination,

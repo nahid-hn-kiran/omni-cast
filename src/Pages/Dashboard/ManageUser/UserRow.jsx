@@ -10,16 +10,16 @@ const UserRow = ({ user, handleDelete }) => {
         <td className="py-2 px-4">{email}</td>
         <td className="py-2 px-4">{role}</td>
         <td className="py-2 px-4">{status}</td>
-        <td className="py-2 px-4">
+        <td className="py-2 px-4 flex flex-col gap-y-4">
           <button
             onClick={() => handleDelete(_id)}
-            className="text-red-500 hover:text-red-700 mr-2"
+            className="text-red-500 hover:text-red-700 mr-2 primary-btn"
           >
             Delete
           </button>
           <Link
             to={`${_id}`}
-            className="text-green-500 hover:text-green-700 mr-2"
+            className="text-green-500 hover:text-green-700 mr-2 secondary-btn text-center"
           >
             Edit
           </Link>
