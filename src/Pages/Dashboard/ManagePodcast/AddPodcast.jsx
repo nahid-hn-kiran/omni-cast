@@ -1,34 +1,35 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// Import ReactQuill for the long description
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { useAddPodcastMutation } from "../../../redux/features/podcast/podcastSlice";
+import Loading from "../../../Shared/Loading/Loading";
+import { showPopup } from "../../../Shared/ShowPopup/ShowPopup";
 
 const AddPodcast = () => {
-  const [title, setTitle] = useState("");
-  const [thumbnail, setThumbnail] = useState(null); // Thumbnail file
-  const [audio, setAudio] = useState(null); // Audio file
+  const [addPodcast, { isLoading, error }] = useAddPodcastMutation();
+
   const [shortDescription, setShortDescription] = useState("");
   const [longDescription, setLongDescription] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Create FormData to send image, audio, and text data
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("thumbnail", thumbnail); // Thumbnail image file
-    formData.append("podcast", audio); // Audio file
-    formData.append("shortDescription", shortDescription);
-    formData.append("longDescription", longDescription);
-
-    try {
-      // Send formData to server
-      // await createPodcast(formData).unwrap();
-      // navigate("/admin/podcasts");
-    } catch (error) {
-      console.error("Failed to add podcast:", error);
-    }
+    const title = e.target.title.value;
+    const formData = {
+      title,
+      thumbnail: "https://www.google.com",
+      podcast: "https://www.google.com",
+      shortDescription,
+      longDescription,
+    };
+    const result = await addPodcast(formData).unwrap();
+    setShortDescription("");
+    setLongDescription("");
+    showPopup({
+      title: "Success!",
+      text: result?.message,
+      icon: "success",
+    });
   };
 
   const navigate = useNavigate();
@@ -36,7 +37,17 @@ const AddPodcast = () => {
     navigate(-1);
   };
 
-  const isLoading = false;
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    showPopup({
+      title: "Error!",
+      text: error?.data?.error,
+      icon: "error",
+    });
+  }
 
   return (
     <div>
@@ -50,7 +61,6 @@ const AddPodcast = () => {
         >
           <h2 className="text-2xl font-bold mb-4">Add New Podcast</h2>
 
-          {/* Title */}
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Title
@@ -58,14 +68,12 @@ const AddPodcast = () => {
             <input
               type="text"
               placeholder="Podcast Title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              name="title"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
             />
           </div>
 
-          {/* Thumbnail Upload */}
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Thumbnail
@@ -73,13 +81,12 @@ const AddPodcast = () => {
             <input
               type="file"
               accept="image/*"
-              onChange={(e) => setThumbnail(e.target.files[0])} // Handle file input
+              name="thumbnail"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
             />
           </div>
 
-          {/* Audio File Upload */}
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Podcast Audio
@@ -87,13 +94,12 @@ const AddPodcast = () => {
             <input
               type="file"
               accept="audio/*"
-              onChange={(e) => setAudio(e.target.files[0])} // Handle audio file input
+              name="podcast"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
             />
           </div>
 
-          {/* Short Description */}
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Short Description
@@ -108,7 +114,6 @@ const AddPodcast = () => {
             />
           </div>
 
-          {/* Long Description with Rich Text Editor */}
           <div className="mb-6">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Long Description
@@ -122,14 +127,13 @@ const AddPodcast = () => {
             />
           </div>
 
-          {/* Submit Button */}
           <div className="flex items-center justify-between">
             <button
               type="submit"
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               disabled={isLoading}
             >
-              {isLoading ? "Adding..." : "Add Podcast"}
+              Add Podcast
             </button>
           </div>
         </form>

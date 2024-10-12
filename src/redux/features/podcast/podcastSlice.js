@@ -2,6 +2,14 @@ import { apiSlice } from "../api/apiSlice";
 
 export const podcastSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
+    addPodcast: builder.mutation({
+      query: (podcast) => ({
+        url: "/podcasts",
+        method: "POST",
+        body: podcast,
+      }),
+      invalidatesTags: "Podcast",
+    }),
     getAllPodcast: builder.query({
       query: () => "/podcasts",
       providesTags: ["Podcast"],
@@ -12,4 +20,8 @@ export const podcastSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useGetAllPodcastQuery, useGetSinglePodcastQuery } = podcastSlice;
+export const {
+  useAddPodcastMutation,
+  useGetAllPodcastQuery,
+  useGetSinglePodcastQuery,
+} = podcastSlice;

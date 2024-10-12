@@ -4,7 +4,6 @@ import "react-quill/dist/quill.snow.css";
 import { useState } from "react";
 import { useAddNewBlogMutation } from "../../../redux/features/blog/blogSlice";
 import Loading from "../../../Shared/Loading/Loading";
-import Error from "../../../Shared/Error/Error";
 import { showPopup } from "../../../Shared/ShowPopup/ShowPopup";
 
 const AddBlog = () => {
@@ -34,16 +33,13 @@ const AddBlog = () => {
     navigate(-1);
   };
 
-  if (error) {
-    showPopup({
-      title: "Success!",
+  if (isLoading) return <Loading />;
+  if (error)
+    return showPopup({
+      title: "Error!",
       text: error?.data?.error,
       icon: "error",
     });
-  }
-
-  if (isLoading) return <Loading />;
-  if (error) return <Error />;
 
   return (
     <div>
