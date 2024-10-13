@@ -71,7 +71,7 @@ const ManagePodcast = () => {
                     Delete
                   </button>
                   <Link
-                    to={`/admin/edit-podcast/${podcast._id}`}
+                    to={`/admin/dashboard/edit-podcast/${podcast._id}`}
                     className="text-green-500 mr-4 secondary-btn w-full text-center"
                   >
                     Edit

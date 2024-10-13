@@ -17,6 +17,8 @@ import ManageBlog from "../Pages/Dashboard/ManageBlog/ManageBlog";
 import AddBlog from "../Pages/Dashboard/ManageBlog/AddBlog";
 import UpdateUser from "../Pages/Dashboard/ManageUser/UpdateUser";
 import DashboardHome from "../Pages/Dashboard/DashboardHome";
+import UpdatePodcast from "../Pages/Dashboard/ManagePodcast/UpdatePodcast";
+import UpdateBlog from "../Pages/Dashboard/ManageBlog/UpdateBlog";
 
 const Router = createBrowserRouter([
   {
@@ -72,6 +74,10 @@ const Router = createBrowserRouter([
             element: <AddPodcast />,
           },
           {
+            path: "edit-podcast/:id",
+            element: <UpdatePodcast />,
+          },
+          {
             path: "manage-users",
             element: <ManageUser />,
           },
@@ -82,6 +88,10 @@ const Router = createBrowserRouter([
           {
             path: "manage-blogs",
             element: <ManageBlog />,
+          },
+          {
+            path: "edit-blog/:id",
+            element: <UpdateBlog />,
           },
           {
             path: "add-blog",

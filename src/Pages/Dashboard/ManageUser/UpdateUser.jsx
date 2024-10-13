@@ -12,8 +12,9 @@ const UpdateUser = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { data: user, isLoading, isError } = useGetSingleUserQuery(id);
-  const [updateUser, { isLoading: isUpdating }] = useUpdateUserMutation();
+  const { data: user, isLoading, error } = useGetSingleUserQuery(id);
+  const [updateUser, { isLoading: updateLoading, updateError }] =
+    useUpdateUserMutation();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -35,18 +36,18 @@ const UpdateUser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await updateUser({ id, updatedUser: formData });
+
+    if (window.confirm(`Are you sure you want to update user ${id} ?`)) {
+      const result = await updateUser({ id, updatedUser: formData });
       showPopup({
         title: "Success",
-        text: "User updated successfully!",
+        text: result?.data?.message,
         icon: "success",
       });
-      navigate("/admin/dashboard/manage-users");
-    } catch (error) {
+    } else {
       showPopup({
         title: "Error",
-        text: error?.message,
+        text: updateError?.data?.message,
         icon: "error",
       });
     }
@@ -61,76 +62,86 @@ const UpdateUser = () => {
     setFormData({ ...formData, imgURL: e.target.files[0] });
   };
 
-  if (isLoading || isUpdating) return <Loading />;
-  if (isError) return <Error />;
+  const goBack = () => {
+    navigate(-1);
+  };
+
+  if (isLoading || updateLoading) return <Loading />;
+  if (error || updateError) return <Error />;
 
   return (
-    <div className="container mx-auto mt-10">
-      <h1 className="text-2xl font-bold mb-4 text-center">Update User</h1>
-      <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
-        <div className="mb-4">
-          <label htmlFor="name" className="block text-gray-700">
-            Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700">
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="role" className="block text-gray-700">
-            Role
-          </label>
-          <select
-            id="role"
-            name="role"
-            value={formData.role}
-            onChange={handleChange}
-            className="mt-1 p-2 w-full border rounded-md"
+    <div>
+      <button onClick={() => goBack()} className="primary-btn mb-4">
+        Go Back
+      </button>
+
+      <div className="container mx-auto mt-10">
+        <h1 className="text-2xl font-bold mb-4 text-center">Update User</h1>
+        <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
+          <div className="mb-4">
+            <label htmlFor="name" className="block text-gray-700">
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border rounded-md"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-gray-700">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border rounded-md"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="role" className="block text-gray-700">
+              Role
+            </label>
+            <select
+              id="role"
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            >
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+          <div className="mb-4">
+            <label htmlFor="imgURL" className="block text-gray-700">
+              Profile Picture
+            </label>
+            <input
+              type="file"
+              id="imgURL"
+              name="imgURL"
+              accept="image/*"
+              onChange={handleFileChange}
+              className="mt-1 p-2 w-full border rounded-md"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-omni-yellow text-white py-2 rounded-md hover:bg-omni-pink transition-colors"
           >
-            <option value="user">User</option>
-            <option value="admin">Admin</option>
-          </select>
-        </div>
-        <div className="mb-4">
-          <label htmlFor="imgURL" className="block text-gray-700">
-            Profile Picture
-          </label>
-          <input
-            type="file"
-            id="imgURL"
-            name="imgURL"
-            accept="image/*"
-            onChange={handleFileChange}
-            className="mt-1 p-2 w-full border rounded-md"
-          />
-        </div>
-        <button
-          type="submit"
-          className="w-full bg-omni-yellow text-white py-2 rounded-md hover:bg-omni-pink transition-colors"
-        >
-          {isUpdating ? "Updating..." : "Update User"}
-        </button>
-      </form>
+            Update User
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

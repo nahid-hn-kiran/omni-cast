@@ -24,6 +24,14 @@ export const podcastSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Podcast"],
     }),
+    updatePodcast: builder.mutation({
+      query: ({ id, updatedPodcast }) => ({
+        url: `/podcast/${id}`,
+        method: "PUT",
+        body: updatedPodcast,
+      }),
+      invalidatesTags: ["Podcast"],
+    }),
   }),
 });
 
@@ -32,4 +40,5 @@ export const {
   useGetAllPodcastQuery,
   useGetSinglePodcastQuery,
   useDeletePodcastMutation,
+  useUpdatePodcastMutation,
 } = podcastSlice;
