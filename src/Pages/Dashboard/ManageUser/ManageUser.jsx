@@ -4,7 +4,6 @@ import {
   useGetAllUsersQuery,
 } from "../../../redux/features/auth/authSlice";
 import Loading from "../../../Shared/Loading/Loading";
-import Error from "../../../Shared/Error/Error";
 import UserRow from "./UserRow";
 import { showPopup } from "../../../Shared/ShowPopup/ShowPopup";
 
@@ -30,7 +29,12 @@ const ManageUser = () => {
   };
 
   if (isLoading || loading1) return <Loading />;
-  if (error || error1) return <Error />;
+  if (error || error1)
+    showPopup({
+      title: "Failed!",
+      text: error ? error?.data?.message : error1?.data?.message,
+      icon: "error",
+    });
 
   return (
     <div className="p-4">

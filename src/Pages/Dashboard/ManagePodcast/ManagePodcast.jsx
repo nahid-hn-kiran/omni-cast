@@ -1,23 +1,40 @@
 import { Link } from "react-router-dom";
-// import {
-//   useGetAllPodcastQuery,
-//   useDeletePodcastMutation,
-// } from "../features/podcast/podcastSlice";
 import Loading from "../../../Shared/Loading/Loading";
-import Error from "../../../Shared/Error/Error";
-import { useGetAllPodcastQuery } from "../../../redux/features/podcast/podcastSlice";
+import {
+  useDeletePodcastMutation,
+  useGetAllPodcastQuery,
+} from "../../../redux/features/podcast/podcastSlice";
+import { showPopup } from "../../../Shared/ShowPopup/ShowPopup";
 
 const ManagePodcast = () => {
-  const { data: podcasts, isLoading, isError } = useGetAllPodcastQuery();
-  //   const [deletePodcast] = useDeletePodcastMutation();
-
-  if (isLoading) return <Loading />;
-  if (isError) return <Error />;
+  const { data: podcasts, isLoading, error } = useGetAllPodcastQuery();
+  const [deletePodcast, { isLoading: deleteLoading, error: deleteError }] =
+    useDeletePodcastMutation();
 
   const handleDelete = (id) => {
-    // deletePodcast(id);
-    console.log(id);
+    if (window.confirm(`Are you sure you want to delete this podcast? ${id}`)) {
+      deletePodcast(id);
+      showPopup({
+        title: "Success!",
+        text: "Podcast deleted successfully!",
+        icon: "success",
+      });
+    } else {
+      showPopup({
+        title: "Failed!",
+        text: "Couldn't delete the Podcast!",
+        icon: "error",
+      });
+    }
   };
+
+  if (isLoading || deleteLoading) return <Loading />;
+  if (error || deleteError)
+    showPopup({
+      title: "Failed!",
+      text: error ? error?.data?.message : deleteError?.data?.message,
+      icon: "error",
+    });
 
   return (
     <div className="container mx-auto p-6">

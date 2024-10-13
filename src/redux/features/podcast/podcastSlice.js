@@ -17,6 +17,13 @@ export const podcastSlice = apiSlice.injectEndpoints({
     getSinglePodcast: builder.query({
       query: (id) => `/podcast/${id}`,
     }),
+    deletePodcast: builder.mutation({
+      query: (id) => ({
+        url: `/podcast/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Podcast"],
+    }),
   }),
 });
 
@@ -24,4 +31,5 @@ export const {
   useAddPodcastMutation,
   useGetAllPodcastQuery,
   useGetSinglePodcastQuery,
+  useDeletePodcastMutation,
 } = podcastSlice;
