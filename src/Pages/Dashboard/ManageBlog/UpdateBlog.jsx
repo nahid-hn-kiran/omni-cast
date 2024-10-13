@@ -1,15 +1,21 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useGetSingleBlogQuery } from "../../../redux/features/blog/blogSlice";
+import {
+  useGetSingleBlogQuery,
+  useUpdateBlogMutation,
+} from "../../../redux/features/blog/blogSlice";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Loading from "../../../Shared/Loading/Loading";
+import { showPopup } from "../../../Shared/ShowPopup/ShowPopup";
 
 const UpdateBlog = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { data: blog, isLoading, isError } = useGetSingleBlogQuery(id);
+  const { data: blog, isLoading, error } = useGetSingleBlogQuery(id);
+  const [updateBlog, { isLoading: updateLoading, error: updateError }] =
+    useUpdateBlogMutation();
 
   const [title, setTitle] = useState("");
   const [thumbnail, setThumbnail] = useState("");
@@ -32,15 +38,34 @@ const UpdateBlog = () => {
       description,
     };
 
-    // Add logic here for sending updatedBlog data to the server
+    if (confirm(`Are you sure you want to update the blog ${id}`)) {
+      const result = await updateBlog({ id, updatedBlog });
+      showPopup({
+        title: "Success!",
+        text: result?.data?.message,
+        icon: "success",
+      });
+    } else {
+      showPopup({
+        title: "Failed!",
+        text: updateError?.data?.message,
+        icon: "error",
+      });
+    }
   };
 
   const goBack = () => {
     navigate(-1);
   };
 
-  if (isLoading) return <Loading />;
-  if (isError) return <div>Error loading blog data</div>;
+  if (isLoading || updateLoading) return <Loading />;
+  if (error) {
+    showPopup({
+      title: "Failed!",
+      text: error?.data?.message,
+      icon: "error",
+    });
+  }
 
   return (
     <div>

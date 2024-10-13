@@ -24,6 +24,14 @@ export const blogtSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Blog"],
     }),
+    updateBlog: builder.mutation({
+      query: ({ id, updatedBlog }) => ({
+        url: `/blog/${id}`,
+        method: "PUT",
+        body: updatedBlog,
+      }),
+      invalidatesTags: ["Blog"],
+    }),
   }),
 });
 
@@ -32,4 +40,5 @@ export const {
   useGetAllblogQuery,
   useGetSingleBlogQuery,
   useDeleteBlogMutation,
+  useUpdateBlogMutation,
 } = blogtSlice;
