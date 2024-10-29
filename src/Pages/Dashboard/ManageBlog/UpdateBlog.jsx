@@ -8,6 +8,10 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Loading from "../../../Shared/Loading/Loading";
 import { showPopup } from "../../../Shared/ShowPopup/ShowPopup";
+import {
+  cloudinary_upload_preset,
+  cloudinary_url,
+} from "../../../utility/utility";
 
 const UpdateBlog = () => {
   const { id } = useParams();
@@ -20,6 +24,7 @@ const UpdateBlog = () => {
   const [title, setTitle] = useState("");
   const [thumbnail, setThumbnail] = useState("");
   const [description, setDescription] = useState("");
+  const [thumbnailFile, setThumbnailFile] = useState(null);
 
   useEffect(() => {
     if (blog) {
@@ -29,12 +34,28 @@ const UpdateBlog = () => {
     }
   }, [blog]);
 
+  const handleFileUpload = async (file) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", cloudinary_upload_preset);
+
+    const response = await fetch(cloudinary_url, {
+      method: "POST",
+      body: formData,
+    });
+    const data = await response.json();
+    return data.secure_url;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const updatedThumbnailUrl = thumbnailFile
+      ? await handleFileUpload(thumbnailFile)
+      : thumbnail;
 
     const updatedBlog = {
       title,
-      thumbnail,
+      thumbnail: updatedThumbnailUrl,
       description,
     };
 
@@ -99,13 +120,20 @@ const UpdateBlog = () => {
               Thumbnail URL
             </label>
             <input
-              type="url"
+              type="file"
               placeholder="Thumbnail URL"
-              value={thumbnail}
-              onChange={(e) => setThumbnail(e.target.value)}
+              accept="image/*"
+              onChange={(e) => setThumbnailFile(e.target.files[0])}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
             />
+            {thumbnailFile ? (
+              <p className="mt-2 text-sm text-green-500">New file selected</p>
+            ) : (
+              <p className="mt-2 text-sm text-gray-500">
+                Current URL: {thumbnail}
+              </p>
+            )}
           </div>
 
           <div className="mb-6">
