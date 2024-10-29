@@ -14,11 +14,15 @@ const BlogCard = ({ blog }) => {
         <Link to={`/blog/${_id}`} className="blog-title">
           {title}
         </Link>
-        <p className="common-text mt-2">
-          {description.length > 100
-            ? description.substring(0, 100) + "..."
-            : description}
-        </p>
+        <p
+          className="common-text mt-2"
+          dangerouslySetInnerHTML={{
+            __html:
+              description.length > 100
+                ? description.substring(0, 100) + "..."
+                : description,
+          }}
+        ></p>
         <div className="flex justify-between blog-meta mt-5">
           <p>Date : {FormatDate(createdAt)}</p>
           <p>3 min read</p>
