@@ -5,11 +5,10 @@ import "react-quill/dist/quill.snow.css";
 import { useAddPodcastMutation } from "../../../redux/features/podcast/podcastSlice";
 import Loading from "../../../Shared/Loading/Loading";
 import { showPopup } from "../../../Shared/ShowPopup/ShowPopup";
-
-const CLOUDINARY_UPLOAD_PRESET = import.meta.env.VITE_PODCAST_UPLOAD_PRESET;
-const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
-console.log(CLOUDINARY_CLOUD_NAME, CLOUDINARY_UPLOAD_PRESET);
-const CLOUDINARY_URL = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/upload`;
+import {
+  cloudinary_upload_preset,
+  cloudinary_url,
+} from "../../../utility/utility";
 
 const AddPodcast = () => {
   const [addPodcast, { isLoading, error }] = useAddPodcastMutation();
@@ -24,9 +23,9 @@ const AddPodcast = () => {
   const handleFileUpload = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+    formData.append("upload_preset", cloudinary_upload_preset);
 
-    const response = await fetch(CLOUDINARY_URL, {
+    const response = await fetch(cloudinary_url, {
       method: "POST",
       body: formData,
     });

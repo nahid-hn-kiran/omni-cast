@@ -5,19 +5,41 @@ import { useState } from "react";
 import { useAddNewBlogMutation } from "../../../redux/features/blog/blogSlice";
 import Loading from "../../../Shared/Loading/Loading";
 import { showPopup } from "../../../Shared/ShowPopup/ShowPopup";
+import {
+  cloudinary_upload_preset,
+  cloudinary_url,
+} from "../../../utility/utility";
 
 const AddBlog = () => {
   const [description, setDescription] = useState("");
   const [addNewBlog, { isLoading, error }] = useAddNewBlogMutation();
 
+  const [thumbnailFile, setThumbnailFile] = useState(null);
+
+  const handleFileUpload = async (file) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", cloudinary_upload_preset);
+
+    const response = await fetch(cloudinary_url, {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+    return data.secure_url;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const thumbnailUrl = thumbnailFile
+      ? await handleFileUpload(thumbnailFile)
+      : "";
     const title = e.target.title.value;
-    // const thumbnail = e.target.thumbnail.files[0];
     const formData = {
       title,
       description,
-      thumbnail: "https://i.ibb.co.com/tszFjVW/single-blog.png",
+      thumbnail: thumbnailUrl,
     };
     const result = await addNewBlog(formData).unwrap();
     setDescription("");
@@ -73,9 +95,13 @@ const AddBlog = () => {
             <input
               type="file"
               name="thumbnail"
+              onChange={(e) => setThumbnailFile(e.target.files[0])}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
             />
+            {thumbnailFile ? (
+              <p className="mt-2 text-sm text-green-500">New file selected</p>
+            ) : null}
           </div>
 
           <div className="mb-6">

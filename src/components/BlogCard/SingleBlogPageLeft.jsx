@@ -22,7 +22,7 @@ const SingleBlogPageLeft = ({ singleBlog }) => {
         </div>
       </div>
       <div className="blog-texts px-7 py-3">
-        <article>{description}</article>
+        <article dangerouslySetInnerHTML={{ __html: description }}></article>
       </div>
     </div>
   );
