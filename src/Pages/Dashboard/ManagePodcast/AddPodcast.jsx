@@ -6,19 +6,46 @@ import { useAddPodcastMutation } from "../../../redux/features/podcast/podcastSl
 import Loading from "../../../Shared/Loading/Loading";
 import { showPopup } from "../../../Shared/ShowPopup/ShowPopup";
 
+const CLOUDINARY_UPLOAD_PRESET = import.meta.env.VITE_PODCAST_UPLOAD_PRESET;
+const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+console.log(CLOUDINARY_CLOUD_NAME, CLOUDINARY_UPLOAD_PRESET);
+const CLOUDINARY_URL = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/upload`;
+
 const AddPodcast = () => {
   const [addPodcast, { isLoading, error }] = useAddPodcastMutation();
 
   const [shortDescription, setShortDescription] = useState("");
   const [longDescription, setLongDescription] = useState("");
 
+  const [audioFile, setAudioFile] = useState(null);
+  const [thumbnailFile, setThumbnailFile] = useState(null);
+
+  // Function to upload a file to Cloudinary
+  const handleFileUpload = async (file) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+
+    const response = await fetch(CLOUDINARY_URL, {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+    return data.secure_url;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const thumbnailUrl = thumbnailFile
+      ? await handleFileUpload(thumbnailFile)
+      : "";
+    const audioUrl = audioFile ? await handleFileUpload(audioFile) : "";
     const title = e.target.title.value;
     const formData = {
       title,
-      thumbnail: "https://www.google.com",
-      podcast: "https://www.google.com",
+      thumbnail: thumbnailUrl,
+      podcast: audioUrl,
       shortDescription,
       longDescription,
     };
@@ -82,9 +109,13 @@ const AddPodcast = () => {
               type="file"
               accept="image/*"
               name="thumbnail"
+              onChange={(e) => setThumbnailFile(e.target.files[0])}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
             />
+            {thumbnailFile ? (
+              <p className="mt-2 text-sm text-green-500">New file selected</p>
+            ) : null}
           </div>
 
           <div className="mb-4">
@@ -94,6 +125,7 @@ const AddPodcast = () => {
             <input
               type="file"
               accept="audio/*"
+              onChange={(e) => setAudioFile(e.target.files[0])}
               name="podcast"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required

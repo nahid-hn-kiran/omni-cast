@@ -49,7 +49,10 @@ const SinglePodcast = ({ singlePodcast }) => {
       </div>
       {/* Article */}
       <div className="article-content border border-[#E0E0E0] rounded-md p-9">
-        <article className="text-omni-dark">{longDescription}</article>
+        <article
+          className="text-omni-dark"
+          dangerouslySetInnerHTML={{ __html: longDescription }}
+        ></article>
       </div>
     </div>
   );
