@@ -7,6 +7,10 @@ import {
 import { showPopup } from "../../../Shared/ShowPopup/ShowPopup";
 import Loading from "../../../Shared/Loading/Loading";
 import Error from "../../../Shared/Error/Error";
+import {
+  cloudinary_upload_preset,
+  cloudinary_url,
+} from "../../../utility/utility";
 
 const UpdateUser = () => {
   const { id } = useParams();
@@ -15,6 +19,8 @@ const UpdateUser = () => {
   const { data: user, isLoading, error } = useGetSingleUserQuery(id);
   const [updateUser, { isLoading: updateLoading, updateError }] =
     useUpdateUserMutation();
+
+  const [profileImgFile, setProfileImgFile] = useState(null);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -29,16 +35,37 @@ const UpdateUser = () => {
         name: user?.data?.name,
         email: user?.data?.email,
         role: user?.data?.role,
-        imgURL: null,
+        imgURL: user?.data?.imgURL,
       });
     }
   }, [user]);
 
+  const handleFileUpload = async (file) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", cloudinary_upload_preset);
+
+    const response = await fetch(cloudinary_url, {
+      method: "POST",
+      body: formData,
+    });
+    const data = await response.json();
+    return data.secure_url;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const updatedProfileImglUrl = profileImgFile
+      ? await handleFileUpload(profileImgFile)
+      : formData.imgURL;
+    const updatedUser = {
+      name: formData.name,
+      email: formData.email,
+      role: formData.role,
+      imgURL: updatedProfileImglUrl,
+    };
     if (window.confirm(`Are you sure you want to update user ${id} ?`)) {
-      const result = await updateUser({ id, updatedUser: formData });
+      const result = await updateUser({ id, updatedUser });
       showPopup({
         title: "Success",
         text: result?.data?.message,
@@ -56,10 +83,6 @@ const UpdateUser = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-  };
-
-  const handleFileChange = (e) => {
-    setFormData({ ...formData, imgURL: e.target.files[0] });
   };
 
   const goBack = () => {
@@ -130,9 +153,16 @@ const UpdateUser = () => {
               id="imgURL"
               name="imgURL"
               accept="image/*"
-              onChange={handleFileChange}
+              onChange={(e) => setProfileImgFile(e.target.files[0])}
               className="mt-1 p-2 w-full border rounded-md"
             />
+            {profileImgFile ? (
+              <p className="mt-2 text-sm text-green-500">New file selected</p>
+            ) : (
+              <p className="mt-2 text-sm text-gray-500">
+                Current URL: {formData?.imgURL}
+              </p>
+            )}
           </div>
           <button
             type="submit"
