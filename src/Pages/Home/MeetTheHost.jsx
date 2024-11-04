@@ -10,8 +10,10 @@ import "swiper/css/scrollbar";
 import HostCard from "../../components/HostCard/HostCard";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import { Navigation } from "swiper/modules";
+import { ourHosts } from "../../constants/constants.jsx";
 
 const MeetTheHost = () => {
+  console.log(ourHosts);
   return (
     <div className="meet-host py-12">
       <div className="container">
@@ -56,30 +58,11 @@ const MeetTheHost = () => {
             modules={[Navigation]}
             className="mySwiper"
           >
-            <SwiperSlide>
-              <HostCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <HostCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <HostCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <HostCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <HostCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <HostCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <HostCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <HostCard />
-            </SwiperSlide>
+            {ourHosts.map((host) => (
+              <SwiperSlide key={host._id}>
+                <HostCard host={host} />
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
       </div>

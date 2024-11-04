@@ -37,7 +37,7 @@ const EpisodeCard = ({ podcast }) => {
             <h3 className="episode-footer-text">15 mins</h3>
           </div>
           <div className="episode-play">
-            <Link to="/">
+            <Link to={`/podcasts/${_id}`}>
               <FaPlayCircle />
             </Link>
           </div>
