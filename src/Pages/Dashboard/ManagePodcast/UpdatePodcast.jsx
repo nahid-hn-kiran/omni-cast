@@ -129,7 +129,6 @@ const UpdatePodcast = () => {
               accept="image/*"
               onChange={(e) => setThumbnailFile(e.target.files[0])}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              required
             />
             {thumbnailFile ? (
               <p className="mt-2 text-sm text-green-500">New file selected</p>

@@ -12,7 +12,10 @@ const Blog = () => {
   if (error) return <Error />;
   return (
     <div className="blog-page">
-      <PageTitle />
+      <PageTitle
+        title="Blogs"
+        description="Read our Blogs. We will upload blogs regularly. Stay tuned."
+      />
       <div className="pt-24">
         <div className="container">
           <div className="section-top flex justify-between">

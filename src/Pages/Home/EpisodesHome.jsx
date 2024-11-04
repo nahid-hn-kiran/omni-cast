@@ -28,7 +28,7 @@ const EpisodesHome = () => {
           </div>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 mt-6 gap-7">
-          {podcasts?.data?.slice(0, 4).map((podcast) => (
+          {podcasts?.data?.slice(0, 6).map((podcast) => (
             <EpisodeCard key={podcast._id} podcast={podcast} />
           ))}
         </div>

@@ -1,6 +1,6 @@
 import { FaDownload } from "react-icons/fa";
 import HeroAudioThumbnail from "../../assets/images/hero-audio.png";
-import PodCast from "../../assets/podcasts/janiye.mp3";
+import PodCast from "../../assets/podcasts/grow-with-us.mp3";
 import AudioPlayer from "../../components/AudioPlayer/AudioPlayer";
 import { IoMdShare } from "react-icons/io";
 
@@ -14,13 +14,13 @@ const HeroAudio = () => {
               <img src={HeroAudioThumbnail} alt="Hero Audio" />
             </div>
             <div className="hero-audio-description">
-              <h3 className="player-title">Human Research</h3>
-              <p className="player-description">with Jesica Lira</p>
+              <h3 className="player-title">Grow with us.</h3>
+              <p className="player-description">with Nahid Hasan</p>
             </div>
           </div>
           <div className="col-span-2 grid sm:grid-cols-4 gap-y-3 gap-x-4 md:gap-x-10 px-1">
             <div className="col-span-3">
-              <AudioPlayer src={PodCast} />
+              <AudioPlayer audio={PodCast} />
             </div>
             <div className="player-buttons flex flex-row sm:flex-col lg:flex-row gap-y-2 gap-x-4">
               <button className="flex items-center gap-x-1.5">
