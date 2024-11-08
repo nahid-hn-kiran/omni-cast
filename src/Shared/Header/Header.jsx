@@ -41,9 +41,15 @@ const Header = ({ user }) => {
                   ))}
                   {user ? (
                     <li>
-                      <Link to="/admin/dashboard" className="primary-btn">
-                        Dashboard
-                      </Link>
+                      {user?.data?.role === "super-admin" ? (
+                        <Link to={`/admin/dashboard`} className="primary-btn">
+                          Dashboard
+                        </Link>
+                      ) : (
+                        <Link to={`/my-profile`} className="primary-btn">
+                          My Profile
+                        </Link>
+                      )}
                       <button
                         className="primary-btn ml-2"
                         onClick={() => handleLogout()}

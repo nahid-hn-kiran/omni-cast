@@ -33,6 +33,11 @@ const Sidebar = () => {
             Manage Users
           </Link>
         </li>
+        <li className="mb-4">
+          <Link to="/my-profile" className="hover:text-gray-400">
+            My Profile
+          </Link>
+        </li>
       </ul>
     </div>
   );

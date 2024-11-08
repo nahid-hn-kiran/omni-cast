@@ -20,6 +20,7 @@ import DashboardHome from "../Pages/Dashboard/DashboardHome";
 import UpdatePodcast from "../Pages/Dashboard/ManagePodcast/UpdatePodcast";
 import UpdateBlog from "../Pages/Dashboard/ManageBlog/UpdateBlog";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import UserProfile from "../Pages/User/UserProfile";
 
 const Router = createBrowserRouter([
   {
@@ -103,6 +104,10 @@ const Router = createBrowserRouter([
             element: <AddBlog />,
           },
         ],
+      },
+      {
+        path: "my-profile",
+        element: <UserProfile />,
       },
       {
         path: "*",
