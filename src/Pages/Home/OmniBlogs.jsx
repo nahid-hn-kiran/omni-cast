@@ -6,7 +6,6 @@ import BlogCard from "../../components/BlogCard/BlogCard";
 
 const OmniBlogs = () => {
   const { data: blogs, error, isLoading } = useGetAllblogQuery();
-  console.log(blogs);
   if (isLoading) return <Loading />;
   if (error) return <Error />;
   return (

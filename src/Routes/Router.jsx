@@ -19,6 +19,7 @@ import UpdateUser from "../Pages/Dashboard/ManageUser/UpdateUser";
 import DashboardHome from "../Pages/Dashboard/DashboardHome";
 import UpdatePodcast from "../Pages/Dashboard/ManagePodcast/UpdatePodcast";
 import UpdateBlog from "../Pages/Dashboard/ManageBlog/UpdateBlog";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 const Router = createBrowserRouter([
   {
@@ -59,7 +60,11 @@ const Router = createBrowserRouter([
       },
       {
         path: "/admin/dashboard",
-        element: <Dashboard />,
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
         children: [
           {
             path: "",

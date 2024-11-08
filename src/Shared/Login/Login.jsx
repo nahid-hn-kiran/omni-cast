@@ -1,14 +1,40 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  useGetUserProfileQuery,
+  useLoginUserMutation,
+} from "../../redux/features/auth/authSlice";
+import Loading from "../Loading/Loading";
+import { useEffect } from "react";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [loginUser, { data, isLoading, error, isSuccess }] =
+    useLoginUserMutation();
+  const { data: userData, isLoading: userLoading } = useGetUserProfileQuery();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const user = { email, password };
+    const response = await loginUser(user);
+    localStorage.setItem("token", response.data.token);
   };
 
+  useEffect(() => {
+    if (isSuccess) {
+      window.location.reload();
+    }
+  }, [isSuccess]);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userData?.data?.email) {
+      navigate("/");
+    }
+  }, [userData, navigate]);
+
+  if (isLoading || userLoading) return <Loading />;
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
       <div className="w-full max-w-md bg-gradient-pink p-8 rounded-lg shadow-lg">
@@ -18,8 +44,7 @@ const Login = () => {
             <label className="block text-gray-700">Email</label>
             <input
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name="email"
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
               required
             />
@@ -28,12 +53,13 @@ const Login = () => {
             <label className="block text-gray-700">Password</label>
             <input
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              name="password"
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
               required
             />
           </div>
+          <p>{error && error?.data?.error}</p>
+          <p>{data?.error && data.error}</p>
           <button
             type="submit"
             className="w-full bg-omni-yellow text-white py-2 rounded-md hover:bg-omni-pink transition-color"

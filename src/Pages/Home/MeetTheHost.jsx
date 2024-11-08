@@ -13,7 +13,6 @@ import { Navigation } from "swiper/modules";
 import { ourHosts } from "../../constants/constants.jsx";
 
 const MeetTheHost = () => {
-  console.log(ourHosts);
   return (
     <div className="meet-host py-12">
       <div className="container">

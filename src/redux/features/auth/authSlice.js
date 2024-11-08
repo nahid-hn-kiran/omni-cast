@@ -9,12 +9,29 @@ export const authSlice = apiSlice.injectEndpoints({
         body: user,
       }),
     }),
+    loginUser: builder.mutation({
+      query: (user) => ({
+        url: "/user/login",
+        method: "POST",
+        body: user,
+      }),
+    }),
     getAllUsers: builder.query({
       query: () => "/user",
       providesTags: ["Auth"],
     }),
     getSingleUser: builder.query({
       query: (id) => `/user/${id}`,
+      providesTags: ["Auth"],
+    }),
+    getUserProfile: builder.query({
+      query: () => {
+        const token = localStorage.getItem("token");
+        return {
+          url: "/users/profile",
+          headers: token ? { Authorization: `Bearer ${token}` } : {},
+        };
+      },
       providesTags: ["Auth"],
     }),
     deleteUser: builder.mutation({
@@ -41,4 +58,6 @@ export const {
   useGetAllUsersQuery,
   useDeleteUserMutation,
   useUpdateUserMutation,
+  useLoginUserMutation,
+  useGetUserProfileQuery,
 } = authSlice;

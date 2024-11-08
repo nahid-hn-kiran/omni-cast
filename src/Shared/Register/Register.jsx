@@ -1,13 +1,16 @@
-import { Link } from "react-router-dom";
-import { useRegisterUserMutation } from "../../redux/features/auth/authSlice";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  useGetUserProfileQuery,
+  useRegisterUserMutation,
+} from "../../redux/features/auth/authSlice";
 import Loading from "../Loading/Loading";
+import { showPopup } from "../ShowPopup/ShowPopup";
+import { useEffect } from "react";
 
 const Register = () => {
   const [registerUser, { isLoading, error, isSuccess }] =
     useRegisterUserMutation();
-  if (isLoading) {
-    return <Loading />;
-  }
+  const { data: userData, isLoading: userLoading } = useGetUserProfileQuery();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -15,9 +18,31 @@ const Register = () => {
     const password = e.target.password.value;
     const confirmPassword = e.target.confirmPassword.value;
     const user = { name, email, password, confirmPassword };
-    const result = await registerUser(user).unwrap();
-    console.log(isSuccess, result);
+    await registerUser(user).unwrap();
+    e.target.reset();
+    showPopup({
+      title: "Success!",
+      text: "Successfully Registered!",
+      icon: "success",
+    });
   };
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (isSuccess) {
+      navigate("/login");
+    }
+  }, [isSuccess, navigate]);
+
+  useEffect(() => {
+    if (userData?.data?.email) {
+      navigate("/");
+    }
+  }, [userData, navigate]);
+
+  if (isLoading || userLoading) {
+    return <Loading />;
+  }
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
