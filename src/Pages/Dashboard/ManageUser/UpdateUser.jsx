@@ -71,6 +71,7 @@ const UpdateUser = () => {
         text: result?.data?.message,
         icon: "success",
       });
+      window.location.reload();
     } else {
       showPopup({
         title: "Error",
@@ -160,7 +161,11 @@ const UpdateUser = () => {
               <p className="mt-2 text-sm text-green-500">New file selected</p>
             ) : (
               <p className="mt-2 text-sm text-gray-500">
-                Current URL: {formData?.imgURL}
+                <img
+                  src={formData?.imgURL}
+                  alt={formData?.name}
+                  className="w-48"
+                />
               </p>
             )}
           </div>

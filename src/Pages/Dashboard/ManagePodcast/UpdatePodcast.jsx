@@ -134,7 +134,7 @@ const UpdatePodcast = () => {
               <p className="mt-2 text-sm text-green-500">New file selected</p>
             ) : (
               <p className="mt-2 text-sm text-gray-500">
-                Current URL: {thumbnail}
+                <img src={thumbnail} alt={title} className="w-48" />
               </p>
             )}
           </div>
