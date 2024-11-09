@@ -24,7 +24,7 @@ const Root = () => {
   }
   return (
     <>
-      <Header user={userData} error={error} />
+      <Header user={userData} />
       <Outlet />
       <Footer />
     </>

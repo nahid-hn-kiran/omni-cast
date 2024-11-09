@@ -51,7 +51,7 @@ export const authSlice = apiSlice.injectEndpoints({
     }),
     updateProfile: builder.mutation({
       query: ({ id, updatedUser }) => ({
-        url: `user/${id}`,
+        url: "/users/profile",
         method: "PUT",
         body: { id, updatedUser },
       }),

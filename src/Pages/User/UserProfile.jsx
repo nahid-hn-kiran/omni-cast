@@ -25,10 +25,9 @@ const UserProfile = () => {
   const [profileImgFile, setProfileImgFile] = useState(null);
 
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    role: "",
-    imgURL: null,
+    name: userData?.data?.name,
+    email: userData?.data?.email,
+    imgURL: userData?.data?.imgURL,
   });
 
   const handleFileUpload = async (file) => {
@@ -54,7 +53,8 @@ const UserProfile = () => {
       email: formData.email,
       imgURL: updatedProfileImglUrl,
     };
-    if (window.confirm(`Are you sure you want to update user ${id} ?`)) {
+    console.log(updatedUser);
+    if (window.confirm(`Are you sure you want to update ?`)) {
       const result = await updateUser({ id, updatedUser });
       showPopup({
         title: "Success",
@@ -90,7 +90,7 @@ const UserProfile = () => {
             type="text"
             id="name"
             name="name"
-            value={userData?.data?.name}
+            value={formData?.name}
             onChange={handleChange}
             className="mt-1 p-2 w-full border rounded-md"
             required
@@ -104,7 +104,7 @@ const UserProfile = () => {
             type="email"
             id="email"
             name="email"
-            value={userData?.data.email}
+            value={formData?.email}
             onChange={handleChange}
             className="mt-1 p-2 w-full border rounded-md"
             required
@@ -130,7 +130,6 @@ const UserProfile = () => {
           <p className="mt-2 text-sm text-gray-500">
             <img
               src={userData?.data?.imgURL}
-              onChange={(e) => setProfileImgFile(e.target.files[0])}
               alt="Profile Picture"
               className="w-28"
             />
