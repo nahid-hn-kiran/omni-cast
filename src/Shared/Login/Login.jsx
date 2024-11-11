@@ -60,6 +60,11 @@ const Login = () => {
           </div>
           <p>{error && error?.data?.error}</p>
           <p>{data?.error && data.error}</p>
+          <div>
+            <p className="text-2xl">Admin Login:</p>
+            <p>Email: nahid.hn.kiran@gmail.com</p>
+            <p>Pass: Hasan1234@A</p>
+          </div>
           <button
             type="submit"
             className="w-full bg-omni-yellow text-white py-2 rounded-md hover:bg-omni-pink transition-color"
