@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+
 # OmniCast 🎙️
 
 OmniCast is a modern podcast website where users can register, log in, listen to engaging podcasts, and explore insightful blog posts. Built using cutting-edge technologies,.
@@ -27,4 +29,6 @@ OmniCast is a modern podcast website where users can register, log in, listen to
 - **SweetAlert2**: For beautiful alert and confirmation pop-ups.
 - **React Quill**: Rich-text editor for creating blog content.
 - **React Icons**: Scalable vector icons for a consistent design.
-- ...and more!
+- # ...and more!
+
+> > > > > > > a40811696f2cb1a67370897ac3a4cbae96940b79
